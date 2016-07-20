@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Polar News - Feed</title>
+    </head>
+    <body>
+        <style>
+            #name {
+                background-color:#009fff;
+                text-align:center;
+                padding:5px;
+            }
+            #details {
+                background-color:#4cbbff;
+                padding:5px;
+            }
+            #tags {
+                background-color:#99d8ff;
+                padding:5px;
+            }
+        </style>
+        {% for article in newsarticle_list %}
+        <div id="name">
+            <h2> <a href={{article.link_to_article}}>{{ article.title }}</a> </h2>
+        </div>
+        <div id="details">
+            {{ article.summary }} <br />
+            <strong>Published: </strong>{{ article.published }} <br />
+            <strong>Author: </strong>{{ article.author }}
+        </div>
+        <div id="tags">
+            <p> <strong>Tagged: </strong>
+            {% for tag in article.tags %}
+            {{ tag.term }},
+            {% endfor %}
+            </p>
+        </div>
+        {% endfor %}
+    </body>
+</html>
